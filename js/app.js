@@ -1,18 +1,12 @@
 /*
- * Create a list that holds all of your cards
+ * A list that holds all of my cards
  */
 
-
-/*
- * Display the cards on the page
- *   - shuffle the list of cards using the provided "shuffle" method below
- *   - loop through each card and create its HTML
- *   - add each card's HTML to the page
- */
+ let cards = $('.card');
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
-    var currentIndex = array.length, temporaryValue, randomIndex;
+    let currentIndex = array.length, temporaryValue, randomIndex;
 
     while (currentIndex !== 0) {
         randomIndex = Math.floor(Math.random() * currentIndex);
@@ -25,6 +19,19 @@ function shuffle(array) {
     return array;
 }
 
+// for debug
+cards.addClass(' open show');
+
+// shuffle cards using shuffle function
+cards = shuffle(cards);
+
+/*
+** loop through each card and create its HTML (ES06 amazing loop)
+** add each card's HTML to the page
+*/
+for (let card of cards){
+	$('.deck').append(card);
+}
 
 /*
  * set up the event listener for a card. If a card is clicked:
