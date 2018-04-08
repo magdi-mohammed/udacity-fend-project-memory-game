@@ -22,16 +22,30 @@ function shuffle(array) {
 // for debug
 // cards.addClass(' open show');
 
-// shuffle cards using shuffle function
-cards = shuffle(cards);
-
 /*
-** loop through each card and create its HTML (ES06 amazing loop)
-** add each card's HTML to the page
+///////////////////////////////////////
+// start game self invoked function ***
+///////////////////////////////////////
 */
-for (let card of cards){
-	$('.deck').append(card);
+
+// to do : when duoble click on an element it makes the element itself matched .. fix this bug 
+
+function startGame() {
+  // shuffle cards using shuffle function
+  cards = shuffle(cards);
+
+  $('.deck').innerHtml = '';
+
+  /*
+  ** loop through each card and create its HTML (ES06 amazing loop)
+  ** add each card's HTML to the page
+  */
+  for (let card of cards){
+  	$('.deck').append(card);
+  }
 }
+
+startGame();
 
 /*
  * set up the event listener for a card. If a card is clicked:
@@ -44,12 +58,14 @@ for (let card of cards){
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
 
+// this function loop through the cards and call another functions when click on any card of them
 cards.each(function () {
   $(this).on('click', function () {
     displaySymbol($(this));
-    // if open cads array has less than one index execute the function
+    // if open cads array has less than one index .. execute the function .. and stord a card
     if (openCardsArr.length < 1) {
       openCards($(this));
+      // else if the array has an element check if the two cards are matched
     } else if (openCardsArr.length == 1) {
       matchedCards($(this));
     }
@@ -65,13 +81,16 @@ function displaySymbol(element) {
 let firstElement = $('.card.open.show');
 let openCardsArr = [firstElement];
 
+// open cards function which stores the open card from the first click then i use it to compare with the card which clicked secondly
 function openCards(element) {
   openCardsArr.push(element);
 }
+// reset open cards function .. empty the array after every two cards flip
+function resetOpenCards() {
+  openCardsArr = [];
+}
 
 
-
-// if the open cards array has another open card .. check of the two cards is matched
 function matchedCards(element) {
   // if condition checks if the openCardsArr is empty or not
   if (typeof openCardsArr !== 'undefined' && openCardsArr.length > 0) {
@@ -88,14 +107,28 @@ function matchedCards(element) {
         openCardElement.removeClass('open show');
         openCardElement.addClass('match');
 
-        openCardsArr = [];
+        resetOpenCards();
 
       } else if (clickedClass !== openCardClass) {
         window.setTimeout(function () {
           clickedElement.removeClass('open show');
           openCardElement.removeClass('open show');
-        }, 300);
-        openCardsArr = [];
+        }, 250);
+
+        resetOpenCards();
+
       }
   }
 }
+
+/*
+/////////////////////
+// Some features ***
+/////////////////////
+*/
+
+// restart the game function
+$('.restart').on('click', function () {
+  window.console.log('heeeeeey');
+  startGame();
+});
