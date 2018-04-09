@@ -140,5 +140,5 @@ function matchedCards(element) {
 
 // restart the game function
 $('.restart').on('click', function () {
-
+  window.location.reload()
 });
