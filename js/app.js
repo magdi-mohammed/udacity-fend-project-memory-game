@@ -59,18 +59,21 @@ function shuffle(array) {
 
 // this function loop through the cards and call another functions when click on any card of them
 cards.each(function () {
-  $(this).on('click', function () {
-    displaySymbol($(this));
+  let $this = $(this);
+
+  $this.on('click', function () {
+    displaySymbol($this);
     // if open cads array has less than one index .. execute the function .. and stord a card
     if (openCardsArr.length < 1) {
-      openCards($(this));
+      openCards($this);
       // else if the array has an element check if the two cards are matched .. and the taget card isn't clicked before and it isn't the cad itself but another cad
-    } else if (openCardsArr.length == 1 && !$(this).hasClass('clicked')) {
-      matchedOrNotmatchedCards($(this));
+    } else if (openCardsArr.length == 1 && !$this.hasClass('clicked')) {
+      matchedOrNotmatchedCards($this);
     }
 
-    incrementMovecounter($(this));
-
+    // features functions
+    incrementMovecounter($this);
+    decrementStars();
   });
 });
 // display the card symbol function
@@ -156,6 +159,28 @@ function incrementMovecounter(element) {
   if (!element.hasClass('clicked') && !element.hasClass('match')) {
     move += 1;
     $('.moves').html(move);
+  }
+}
+
+// decrement the stars counter function
+
+function decrementStars() {
+  let firstStar = $('.star-one');
+  let secondStar = $('.star-two');
+  let LastStar = $('.star-three');
+  // change the stat icon with an empty star
+
+  // two stars
+  if (move == 11) {
+    LastStar.attr('class', 'star-three fa fa-star-o');
+  }
+  // one star
+  if (move == 14) {
+    secondStar.attr('class', 'star-two fa fa-star-o');
+  }
+  // zero
+  if (move == 18) {
+    firstStar.attr('class', 'star-one fa fa-star-o');
   }
 }
 
