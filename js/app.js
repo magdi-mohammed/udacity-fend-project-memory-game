@@ -64,10 +64,10 @@ cards.each(function () {
   $this.on('click', function () {
     displaySymbol($this);
     // if open cads array has less than one index .. execute the function .. and stord a card
-    if (openCardsArr.length < 1) {
+    if (openCardsArr.length < 1 && !$this.hasClass('match')) {
       openCards($this);
       // else if the array has an element check if the two cards are matched .. and the taget card isn't clicked before and it isn't the cad itself but another cad
-    } else if (openCardsArr.length == 1 && !$this.hasClass('clicked')) {
+    } else if (openCardsArr.length == 1 && !$this.hasClass('clicked') && !$this.hasClass('match')) {
       matchedOrNotmatchedCards($this);
     }
 
