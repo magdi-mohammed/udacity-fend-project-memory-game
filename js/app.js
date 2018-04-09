@@ -63,7 +63,7 @@ cards.each(function () {
       openCards($(this));
       // else if the array has an element check if the two cards are matched .. and the taget card isn't clicked before and it isn't the cad itself but another cad
     } else if (openCardsArr.length == 1 && !$(this).hasClass('clicked')) {
-      matchedCards($(this));
+      matchedOrNotmatchedCards($(this));
     }
   });
 });
@@ -99,7 +99,7 @@ function resetOpenCards() {
 }
 
 
-function matchedCards(element) {
+function  matchedOrNotmatchedCards(element) {
   // if condition checks if the openCardsArr is empty or not
   if (typeof openCardsArr !== 'undefined' && openCardsArr.length > 0) {
     let clickedElement = element;
