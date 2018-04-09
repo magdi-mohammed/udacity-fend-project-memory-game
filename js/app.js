@@ -29,6 +29,7 @@ function shuffle(array) {
 */
 
 // to do : when click on first element on the page when the game starts it matched the first card with it self .. i need to make exception on my if condition on the open cards function
+// to do : when i click on an match cad it compares it with un matched card .. i have to tell it just match the un matched cards 
 
 (function startGame() {
   // shuffle cards using shuffle function
