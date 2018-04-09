@@ -28,6 +28,8 @@ function shuffle(array) {
 ///////////////////////////////////////
 */
 
+// to do : when click on first element on the page when the game starts it matched the first card with it self .. i need to make exception on my if condition on the open cards function
+
 (function startGame() {
   // shuffle cards using shuffle function
   cards = shuffle(cards);
@@ -65,6 +67,9 @@ cards.each(function () {
     } else if (openCardsArr.length == 1 && !$(this).hasClass('clicked')) {
       matchedOrNotmatchedCards($(this));
     }
+
+    incrementMovecounter($(this));
+
   });
 });
 // display the card symbol function
@@ -142,3 +147,12 @@ function  matchedOrNotmatchedCards(element) {
 $('.restart').on('click', function () {
   window.location.reload()
 });
+
+// increment the move counter function
+function incrementMovecounter(element) {
+  if (!element.hasClass('clicked') && !element.hasClass('match')) {
+    window.console.log('one click');
+  }
+}
+
+// win game function
