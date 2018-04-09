@@ -28,9 +28,7 @@ function shuffle(array) {
 ///////////////////////////////////////
 */
 
-// to do : when duoble click on an element it makes the element itself matched .. fix this bug 
-
-function startGame() {
+(function startGame() {
   // shuffle cards using shuffle function
   cards = shuffle(cards);
 
@@ -43,9 +41,7 @@ function startGame() {
   for (let card of cards){
   	$('.deck').append(card);
   }
-}
-
-startGame();
+})()
 
 /*
  * set up the event listener for a card. If a card is clicked:
@@ -65,15 +61,19 @@ cards.each(function () {
     // if open cads array has less than one index .. execute the function .. and stord a card
     if (openCardsArr.length < 1) {
       openCards($(this));
-      // else if the array has an element check if the two cards are matched
-    } else if (openCardsArr.length == 1) {
+      // else if the array has an element check if the two cards are matched .. and the taget card isn't clicked before and it isn't the cad itself but another cad
+    } else if (openCardsArr.length == 1 && !$(this).hasClass('clicked')) {
       matchedCards($(this));
     }
   });
 });
 // display the card symbol function
+
 function displaySymbol(element) {
-  element.addClass('open show');
+  // check if element has not match class .. because if the card is matched we don't need it again
+  if (!element.hasClass('match')) {
+    element.addClass('open show');
+  }
 }
 
 // list of open cards
@@ -84,10 +84,18 @@ let openCardsArr = [firstElement];
 // open cards function which stores the open card from the first click then i use it to compare with the card which clicked secondly
 function openCards(element) {
   openCardsArr.push(element);
+  // check if element has not match class .. because if the card is matched we don't need it again
+  if (!element.hasClass('match')) {
+    element.addClass('clicked');
+  }
 }
-// reset open cards function .. empty the array after every two cards flip
+// reset open cards function .. empty the array after every two cards flip .. and remove class clicked every two cards flip
 function resetOpenCards() {
   openCardsArr = [];
+  // if there is an element has class 'clicked' remove that class from that element
+  if ($('.clicked').length) {
+    $('.clicked').removeClass('clicked');
+  }
 }
 
 
@@ -115,6 +123,9 @@ function matchedCards(element) {
           openCardElement.removeClass('open show');
         }, 250);
 
+        if ($('.clicked').length) {
+          $('.clicked').removeClass('clicked');
+        }
         resetOpenCards();
 
       }
@@ -129,6 +140,5 @@ function matchedCards(element) {
 
 // restart the game function
 $('.restart').on('click', function () {
-  window.console.log('heeeeeey');
-  startGame();
+
 });
