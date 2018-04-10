@@ -28,7 +28,7 @@ function shuffle(array) {
 ///////////////////////////////////////
 */
 
-(function startGame() {
+function startGame() {
   // shuffle cards using shuffle function
   cards = shuffle(cards);
 
@@ -40,13 +40,55 @@ function shuffle(array) {
   for (let card of cards){
   	$('.deck').append(card);
   }
-})()
+}
+
+startGame();
+
+// reset game function
+function resetGame() {
+  // flib back all the cards
+  if (cards.hasClass('match')) {
+    cards.removeClass('match');
+  }
+
+  if (cards.hasClass('open')) {
+    cards.removeClass('open');
+  }
+
+  if (cards.hasClass('show')) {
+    cards.removeClass('show');
+  }
+
+  // re set the first element .. opening it .. and pushing it into the open cards array
+  firstElement = cards.children(':eq(0)').parent('.card').addClass('open show clicked');
+  openCardsArr = [firstElement];
+  // reset the number of seconds to 0
+  seconds = 0;
+  clearInterval(counter);
+  // reset the number of moves to 0
+  move = 0
+  $('.moves').html(move);
+  // reset the number of stars to 3 and show full stars
+  starsNumber = 3;
+  firstStar.attr('class', 'star-one fa fa-star');
+  secondStar.attr('class', 'star-two fa fa-star');
+  LastStar.attr('class', 'star-three fa fa-star');
+}
 
 // this function loop through the cards and call another functions when click on any card of them
 cards.each(function () {
   let $this = $(this);
 
   $this.on('click', function () {
+    // features functions
+    if (!firstClick) {
+      timer();
+    }
+    incrementMovecounter($this);
+    decrementStars();
+    winGame();
+
+    // core functions
     displaySymbol($this);
     // if open cads array has less than one index .. execute the function .. and stord a card
     if (openCardsArr.length < 1 && !$this.hasClass('match')) {
@@ -56,13 +98,6 @@ cards.each(function () {
       matchedOrNotmatchedCards($this);
     }
 
-    // features functions
-    if (!firstClick) {
-      timer();
-    }
-    incrementMovecounter($this);
-    decrementStars();
-    winGame();
   });
 });
 // display the card symbol function
@@ -148,19 +183,14 @@ function timer() {
       }, 1000);
 }
 
-// restart the game function
-$('.restart').on('click', function () {
-  window.location.reload()
-});
-
 // increment the move counter function
 
 // this variable will be shown after wining the game
 let move = 0;
 
 function incrementMovecounter(element) {
-  // this if condition to prevent the function from counting every clicked element .. an if i want to make it dosn't count the correct match as a move i should add this condition (if .. !element.hasClass('match'))
-  if (!element.hasClass('clicked')) {
+  // this if condition to prevent the function from counting every clicked element
+  if (!element.hasClass('clicked') && !element.hasClass('match')) {
     move += 1;
     $('.moves').html(move);
   }
@@ -170,12 +200,12 @@ function incrementMovecounter(element) {
 
 // this variable will be shown after wining the game
 let starsNumber = 3;
+// html indexed stars
+let firstStar = $('.star-one');
+let secondStar = $('.star-two');
+let LastStar = $('.star-three');
 
 function decrementStars() {
-  let firstStar = $('.star-one');
-  let secondStar = $('.star-two');
-  let LastStar = $('.star-three');
-
   // change the stat icon with an empty star
 
   // two stars
@@ -230,3 +260,10 @@ function winGame() {
     }, 250);
   }
 }
+
+// restart the game function
+$('.restart').on('click', function () {
+  // window.location.reload();
+  resetGame();
+  startGame();
+});
