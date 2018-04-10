@@ -176,6 +176,8 @@ let matchedCardsArr = [];
 function winGame() {
   window.console.log(matchedCardsArr);
   if (matchedCardsArr.length === 16) {
-    window.console.log('you win');
+    window.setTimeout(function () {
+      $('#win-message-section').css({opacity: 1, visibility: 'visible'});
+    }, 250);
   }
 }
