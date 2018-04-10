@@ -139,6 +139,8 @@ $('.restart').on('click', function () {
 });
 
 // increment the move counter function
+
+// this variable will be shown after wining the game
 let move = 0;
 
 function incrementMovecounter(element) {
@@ -151,22 +153,29 @@ function incrementMovecounter(element) {
 
 // decrement the stars counter function
 
+// this variable will be shown after wining the game
+let starsNumber = 3;
+
 function decrementStars() {
   let firstStar = $('.star-one');
   let secondStar = $('.star-two');
   let LastStar = $('.star-three');
+
   // change the stat icon with an empty star
 
   // two stars
   if (move == 11) {
+    starsNumber = 2;
     LastStar.attr('class', 'star-three fa fa-star-o');
   }
   // one star
   if (move == 14) {
+    starsNumber = 1;
     secondStar.attr('class', 'star-two fa fa-star-o');
   }
   // zero
   if (move == 18) {
+    starsNumber = 0;
     firstStar.attr('class', 'star-one fa fa-star-o');
   }
 }
@@ -174,10 +183,22 @@ function decrementStars() {
 // win game function
 let matchedCardsArr = [];
 function winGame() {
-  window.console.log(matchedCardsArr);
+  // if all cards are matched
   if (matchedCardsArr.length === 16) {
     window.setTimeout(function () {
+      // show the message section
       $('#win-message-section').css({opacity: 1, visibility: 'visible'});
+      // show the game info
+
+      // number of moves
+      $('#moves-number').text(move);
+      // number of stars
+      if (starsNumber === 1) {
+        $('#stars-info').text(starsNumber + ' star');
+      } else {
+        $('#stars-info').text(starsNumber + ' stars');
+      }
+
     }, 250);
   }
 }
