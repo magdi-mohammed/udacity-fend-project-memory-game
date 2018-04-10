@@ -309,6 +309,8 @@ $('.restart').on('click', function () {
   startGame();
 });
 
+window.console.log($('#play-again'));
+
 // play again function
 $('#play-again').on('click', function () {
 
