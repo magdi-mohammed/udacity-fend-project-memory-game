@@ -142,6 +142,10 @@ h1 {
   z-index: 9;
 }
 
+#win-message-section h2 {
+  text-align: center;
+}
+
 #win-message-section .txt-holder {
   text-align: center;
   color: #6c6c6c;
