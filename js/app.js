@@ -136,9 +136,6 @@ function  matchedOrNotmatchedCards(element) {
           openCardElement.removeClass('open show');
         }, 250);
 
-        if ($('.clicked').length) {
-          $('.clicked').removeClass('clicked');
-        }
         resetOpenCards();
 
       }
