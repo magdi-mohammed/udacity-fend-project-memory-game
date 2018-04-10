@@ -34,6 +34,12 @@ h1 {
     text-transform: uppercase;
 }
 
+.wrong-answer {
+  background: #a4000f;
+}
+
+/* end of global */
+
 /*
  * Styles for the deck of cards
  */
