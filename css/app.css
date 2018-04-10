@@ -107,8 +107,10 @@ h1 {
 .score-panel .restart-icon__holder {
     float: right;
     cursor: pointer;
+    /* those edits is for making the icon more clickable*/
     width: 48px;
     height: 48px;
+    /* PS: i learned this from udacity responsive lesson :) */
     display: flex;
     justify-content: flex-end;
 }
