@@ -108,3 +108,44 @@ h1 {
     float: right;
     cursor: pointer;
 }
+
+/* win game message section  */
+
+#win-message-section {
+  /* opacity: 0;
+  visibility: hidden; */
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+  transition: opacity 0.3s ease-in;
+}
+
+#win-message-section .txt-holder {
+  text-align: center;
+  color: #6c6c6c;
+  margin-bottom: 1em;
+}
+
+#win-message-section .txt-holder .txt {
+  margin: 0;
+}
+
+#win-message-section .play-again__botton {
+  background: #02ccba;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 5px;
+  padding: 5px 20px;
+  cursor: pointer;
+}
+
+/* end of win the game message section */
