@@ -74,6 +74,7 @@ cards.each(function () {
     // features functions
     incrementMovecounter($this);
     decrementStars();
+    winGame();
   });
 });
 // display the card symbol function
@@ -124,6 +125,9 @@ function  matchedOrNotmatchedCards(element) {
         openCardElement.removeClass('open show');
         openCardElement.addClass('match');
 
+        // push the two matched cards into matched cards array to use them in the winGame function
+        matchedCardsArr.push(clickedElement, openCardElement);
+
         resetOpenCards();
 
       } else if (clickedClass !== openCardClass) {
@@ -156,7 +160,8 @@ $('.restart').on('click', function () {
 let move = 0;
 
 function incrementMovecounter(element) {
-  if (!element.hasClass('clicked') && !element.hasClass('match')) {
+  // this if condition to prevent the function from counting every clicked element .. an if i want to make it dosn't count the correct match as a move i should add this condition (if .. !element.hasClass('match'))
+  if (!element.hasClass('clicked')) {
     move += 1;
     $('.moves').html(move);
   }
@@ -185,3 +190,10 @@ function decrementStars() {
 }
 
 // win game function
+let matchedCardsArr = [];
+function winGame() {
+  window.console.log(matchedCardsArr);
+  if (matchedCardsArr.length === 16) {
+    window.console.log('you win');
+  }
+}
