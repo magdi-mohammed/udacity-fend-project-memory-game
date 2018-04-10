@@ -57,6 +57,9 @@ cards.each(function () {
     }
 
     // features functions
+    if (!firstClick) {
+      timer();
+    }
     incrementMovecounter($this);
     decrementStars();
     winGame();
@@ -133,6 +136,18 @@ function  matchedOrNotmatchedCards(element) {
 /////////////////////
 */
 
+// timer function .. count seconds from the game start to the end
+let firstClick = false;
+let counter;
+
+function timer() {
+  firstClick = true;
+  let seconds = 0;
+  counter = setInterval(function () {
+          seconds += 1;
+      }, 1000);
+}
+
 // restart the game function
 $('.restart').on('click', function () {
   window.location.reload()
@@ -186,6 +201,8 @@ function winGame() {
   // if all cards are matched
   if (matchedCardsArr.length === 16) {
     window.setTimeout(function () {
+      //stop the timer
+      clearInterval(counter);
       // show the message section
       $('#win-message-section').css({opacity: 1, visibility: 'visible'});
       // animate the svg
