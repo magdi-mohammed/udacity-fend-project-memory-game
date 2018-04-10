@@ -64,6 +64,8 @@ h1 {
     justify-content: center;
     align-items: center;
     box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
+    /* this is set to fix an issue with restart-icon__holder*/
+    z-index: 1;
 }
 
 .deck .card.open {
@@ -112,7 +114,7 @@ h1 {
     height: 48px;
     /* PS: i learned this from udacity responsive lesson :) */
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
 }
 
 .score-panel .restart-icon__holder i {
