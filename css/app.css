@@ -138,6 +138,8 @@ h1 {
   align-items: center;
   background: #fff;
   transition: opacity 0.2s ease-in;
+  /* to fix the issue which happend because of  card z-index */
+  z-index: 9;
 }
 
 #win-message-section .txt-holder {
