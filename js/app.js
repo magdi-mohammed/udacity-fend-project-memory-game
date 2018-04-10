@@ -28,9 +28,6 @@ function shuffle(array) {
 ///////////////////////////////////////
 */
 
-// to do : when click on first element on the page when the game starts it matched the first card with it self .. i need to make exception on my if condition on the open cards function
-// to do : when i click on an match cad it compares it with un matched card .. i have to tell it just match the un matched cards
-
 (function startGame() {
   // shuffle cards using shuffle function
   cards = shuffle(cards);
@@ -39,22 +36,11 @@ function shuffle(array) {
   ** loop through each card and create its HTML (ES06 amazing loop)
   ** add each card's HTML to the page
   */
-  
+
   for (let card of cards){
   	$('.deck').append(card);
   }
 })()
-
-/*
- * set up the event listener for a card. If a card is clicked:
- *  - display the card's symbol (put this functionality in another function that you call from this one)
- *  - add the card to a *list* of "open" cards (put this functionat slity in another function that you call from this one)
- *  - if the list already has another card, check to see if the two cards match
- *    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
- *    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
- *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
- *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
- */
 
 // this function loop through the cards and call another functions when click on any card of them
 cards.each(function () {
