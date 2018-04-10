@@ -139,10 +139,10 @@ function  matchedOrNotmatchedCards(element) {
 // timer function .. count seconds from the game start to the end
 let firstClick = false;
 let counter;
+let seconds = 0;
 
 function timer() {
   firstClick = true;
-  let seconds = 0;
   counter = setInterval(function () {
           seconds += 1;
       }, 1000);
@@ -218,6 +218,13 @@ function winGame() {
         $('#stars-info').text(starsNumber + ' star');
       } else {
         $('#stars-info').text(starsNumber + ' stars');
+      }
+
+      // number of seconds
+      if (seconds === 1) {
+        $('#seconds-info').text(seconds + ' second');
+      } else {
+        $('#seconds-info').text(seconds + ' seconds');
       }
 
     }, 250);
