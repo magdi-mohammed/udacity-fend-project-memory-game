@@ -35,12 +35,11 @@ function shuffle(array) {
   // shuffle cards using shuffle function
   cards = shuffle(cards);
 
-  $('.deck').innerHtml = '';
-
   /*
   ** loop through each card and create its HTML (ES06 amazing loop)
   ** add each card's HTML to the page
   */
+  
   for (let card of cards){
   	$('.deck').append(card);
   }
