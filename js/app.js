@@ -55,15 +55,15 @@ function resetGame() {
 
   // flib back all the cards
   if (cards.hasClass('match')) {
-    cards.removeClass('match');
+    $('.card').removeClass('match');
   }
 
   if (cards.hasClass('open')) {
-    cards.removeClass('open');
+    $('.card').removeClass('open');
   }
 
   if (cards.hasClass('show')) {
-    cards.removeClass('show');
+    $('.card').removeClass('show');
   }
 
   // re set the first element .. opening it .. and pushing it into the open cards array
@@ -87,14 +87,16 @@ cards.each(function () {
   let $this = $(this);
 
   $this.on('click', function () {
+    
+    // features functions
+    if (!firstClick) {
+      timer();
+    }
+    incrementMovecounter($this);
+    decrementStars();
+
     // if game is runing wait unitl it finishs
     if (!gameIsRunning) {
-      // features functions
-      if (!firstClick) {
-        timer();
-      }
-      incrementMovecounter($this);
-      decrementStars();
 
       // core functions
       displaySymbol($this);
