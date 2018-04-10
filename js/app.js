@@ -169,7 +169,7 @@ function decrementStars() {
     LastStar.attr('class', 'star-three fa fa-star-o');
   }
   // one star
-  if (move == 14) {
+  if (move == 16) {
     starsNumber = 1;
     secondStar.attr('class', 'star-two fa fa-star-o');
   }
