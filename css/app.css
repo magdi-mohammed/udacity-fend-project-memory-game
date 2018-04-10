@@ -142,6 +142,74 @@ h1 {
   z-index: 9;
 }
 
+/*
+** animations
+*/
+
+/* svg */
+
+#win-message-section .righ-mark {
+  width: 100px;
+}
+
+.circ{
+    opacity: 0;
+    stroke-dasharray: 130;
+    stroke-dashoffset: 130;
+    -webkit-transition: all 1s;
+    -moz-transition: all 1s;
+    -ms-transition: all 1s;
+    -o-transition: all 1s;
+    transition: all 1s;
+    /* styles */
+    fill: #ffffff;
+    stroke: rgba(0, 0, 0, 0.1);
+    stroke-width: 2;
+    stroke-linejoin: round;
+    stroke-miterlimit: 10;
+}
+.tick{
+    stroke-dasharray: 50;
+    stroke-dashoffset: 50;
+    -webkit-transition: stroke-dashoffset 1s 0.5s ease-out;
+    -moz-transition: stroke-dashoffset 1s 0.5s ease-out;
+    -ms-transition: stroke-dashoffset 1s 0.5s ease-out;
+    -o-transition: stroke-dashoffset 1s 0.5s ease-out;
+    transition: stroke-dashoffset 1s 0.5s ease-out;
+
+    /* styles */
+    fill:none;
+    stroke: #8bd599;
+    stroke-width:2;
+    stroke-linejoin:round;
+    stroke-miterlimit:10;
+}
+.drawn svg .path{
+    opacity: 1;
+    stroke-dashoffset: 0;
+}
+
+/* the rest of elements */
+
+.game-win-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.fade-out {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease-in;
+  transition-delay: 0.7s;
+}
+
+.fade-in {
+  opacity: 1;
+  visibility: visible;
+}
+
 #win-message-section h2 {
   text-align: center;
 }

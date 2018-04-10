@@ -188,8 +188,12 @@ function winGame() {
     window.setTimeout(function () {
       // show the message section
       $('#win-message-section').css({opacity: 1, visibility: 'visible'});
-      // show the game info
+      // animate the svg
+      $('.righ-mark').addClass('drawn');
+      // animate the rest of elements
+      $('.fade-out').addClass('fade-in');
 
+      // show the game info :
       // number of moves
       $('#moves-number').text(move);
       // number of stars

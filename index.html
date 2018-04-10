@@ -88,16 +88,25 @@
     </div>
     <!-- win game message section  -->
     <div id="win-message-section">
-      <h2>
-        Congratulations! You Won!
-      </h2>
-      <div class="txt-holder">
-        <p class="txt" id="win-info">
-          with <span id="moves-number"></span> moves and <span id="stars-info"></span>
-        </p>
-        <p class="txt">Wooooooo!</p>
+      <div class="righ-mark">
+        <!-- (svg Congratulations Page Done Icon, with my own styles) from : https://codepen.io/abhijit_mishra/pen/yXWwqd -->
+        <svg version="1.1" id="tick" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 37 37" style="enable-background:new 0 0 37 37;" xml:space="preserve">
+          <path class="circ path" d="M30.5,6.5L30.5,6.5c6.6,6.6,6.6,17.4,0,24l0,0c-6.6,6.6-17.4,6.6-24,0l0,0c-6.6-6.6-6.6-17.4,0-24l0,0C13.1-0.2,23.9-0.2,30.5,6.5z"/>
+          <polyline class="tick path" points="11.6,20 15.9,24.2 26.4,13.8 "/>
+        </svg>
       </div>
-      <div class="play-again__botton restart">Play again!</div>
+      <div class="fade-out game-win-info">
+        <h2>
+          Congratulations! You Won!
+        </h2>
+        <div class="txt-holder">
+          <p class="txt" id="win-info">
+            with <span id="moves-number"></span> moves and <span id="stars-info"></span>
+          </p>
+          <p class="txt">Wooooooo!</p>
+        </div>
+        <div class="play-again__botton restart">Play again!</div>
+      </div>
     </div>
     <!-- end of win game message section -->
     <script src="js/jquery-3.3.1.slim.min.js"></script>
