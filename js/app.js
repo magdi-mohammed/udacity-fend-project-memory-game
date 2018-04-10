@@ -267,10 +267,13 @@ function decrementStars() {
 let matchedCardsArr = [];
 function winGame() {
   // if all cards are matched
-  if (matchedCardsArr.length === 2) {
+  if (matchedCardsArr.length === 16) {
+
+    //stop the timer immediately
+    clearInterval(counter);
+
+    // wait one second after the game runing status is false  .. which means : there is no matching function is runings and no animations ...
     window.setTimeout(function () {
-      //stop the timer
-      clearInterval(counter);
       // show the message section
       $('#win-message-section').css({opacity: 1, visibility: 'visible'});
       // animate the svg
@@ -295,7 +298,7 @@ function winGame() {
         $('#seconds-info').text(seconds + ' seconds');
       }
 
-    }, 250);
+    }, 1000);
   }
 }
 
