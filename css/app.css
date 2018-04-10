@@ -34,10 +34,6 @@ h1 {
     text-transform: uppercase;
 }
 
-.wrong-answer {
-  background: #a4000f;
-}
-
 /* end of global */
 
 /*
@@ -72,12 +68,19 @@ h1 {
     justify-content: center;
     align-items: center;
     box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
+
+    /*transition effects */
+    transition: transform 0.2s;
+    transform-style: preserve-3d;
 }
 
 .deck .card.open {
-    transform: rotateY(0);
     background: #02b3e4;
     cursor: default;
+}
+
+.deck .card.flipped {
+  transform: rotateY( 180deg );
 }
 
 .deck .card.show {
@@ -241,3 +244,9 @@ h1 {
 }
 
 /* end of win the game message section */
+
+/* overlap edits */
+
+.deck .card.wrong-answer {
+  background: #f25327;
+}

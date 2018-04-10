@@ -28,6 +28,10 @@ function shuffle(array) {
 ///////////////////////////////////////
 */
 
+// to do : the move counter counts twice .. it counts on every click (fix)
+// to do : the seconds counter dosn't run (fix)
+// to do : the play again button make the win from the first play (fix)
+
 function startGame() {
   // shuffle cards using shuffle function
   cards = shuffle(cards);
@@ -63,7 +67,7 @@ function resetGame() {
   }
 
   // re set the first element .. opening it .. and pushing it into the open cards array
-  firstElement = cards.children(':eq(0)').parent('.card').addClass('open show clicked');
+  firstElement = cards.children(':eq(0)').parent('.card').addClass('open show clicked flipped');
   openCardsArr = [firstElement];
   // reset the number of seconds to 0
   seconds = 0;
@@ -112,13 +116,13 @@ cards.each(function () {
 function displaySymbol(element) {
   // check if element has not match class .. because if the card is matched we don't need it again
   if (!element.hasClass('match')) {
-    element.addClass('open show');
+    element.addClass('open show flipped');
   }
 }
 
 // list of open cards
 // firstElement is the random first open card , i used it to compare with the second element showen by click
-let firstElement = $('.card.open.show');
+let firstElement = $('.card.open.show.flipped');
 let openCardsArr = [firstElement];
 
 // open cards function which stores the open card from the first click then i use it to compare with the card which clicked secondly
@@ -180,20 +184,29 @@ function  matchedOrNotmatchedCards(element) {
 
       } else if (clickedClass !== openCardClass) {
 
-        // animate the two cards
-        clickedElement.addClass('animated wobble');
-        openCardElement.addClass('animated wobble');
+        // wait 0.3 second
+        setTimeout(function() {
+          // animate the two cards
+          clickedElement.addClass('animated wobble wrong-answer');
+          openCardElement.addClass('animated wobble wrong-answer');
+        }, 300);
+
+
         // waint 1 second and : flip the card .. clear animate end the game runing status
         window.setTimeout(function () {
-          // flip back the cards
-          clickedElement.removeClass('open show');
-          openCardElement.removeClass('open show');
-
           // remove animate class from the two cards
-          clickedElement.removeClass('animated wobble');
-          openCardElement.removeClass('animated wobble');
+          clickedElement.removeClass('animated wobble show');
+          openCardElement.removeClass('animated wobble show');
 
-          gameIsRunning = false;
+          // wait another time
+          setTimeout(function () {
+            // flip back the cards
+            clickedElement.removeClass('open show flipped wrong-answer');
+            openCardElement.removeClass('open show flipped wrong-answer');
+
+            gameIsRunning = false;
+
+          }, 100);
 
         }, 1000);
 
@@ -303,19 +316,14 @@ function winGame() {
 }
 
 // restart the game function
-$('.restart').on('click', function () {
+$('#restart').on('click', function () {
   // window.location.reload(); .. this is the easy way :D (refresh the page)
   resetGame();
   startGame();
 });
 
-window.console.log($('#play-again'));
-
 // play again function
 $('#play-again').on('click', function () {
-
-  // for debug
-  window.console.log('win');
 
   resetGame();
   startGame();
