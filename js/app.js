@@ -153,7 +153,7 @@ cards.each(function () {
             // core function
             matchedOrNotmatchedCards($this);
 
-          }, 1020);
+          }, 320);
         }
       }
     }
@@ -171,7 +171,7 @@ function displaySymbol(element) {
   setTimeout(function () {
     // remove flipInY class from the two cards
     element.removeClass('flipInY');
-  }, 1000);
+  }, 320);
 
 }
 
@@ -246,11 +246,6 @@ function  matchedOrNotmatchedCards(element) {
 
       } else if (clickedClass !== openCardClass) {
 
-        // the first element on the game start has an flipInY class .. if that element exist and it exist on the game start remove that class from it
-        if (openCardElement.hasClass('flipInY')) {
-          openCardElement.removeClass('flipInY');
-        }
-
         // animate the two cards
         clickedElement.addClass('wobble wrong-answer');
         openCardElement.addClass('wobble wrong-answer');
@@ -270,11 +265,10 @@ function  matchedOrNotmatchedCards(element) {
               openCardElement.removeClass('flipInY');
             }, 1020);
 
+            resetOpenCards();
+            gameIsRunning = false;
+
         }, 1020);
-
-        resetOpenCards();
-
-        gameIsRunning = false;
 
       }
   }
