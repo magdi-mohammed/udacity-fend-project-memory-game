@@ -55,23 +55,26 @@ function resetGame() {
 
   // flib back all the cards
   if (cards.hasClass('match')) {
-    $('.card').removeClass('match');
+    cards.removeClass('match');
   }
 
   if (cards.hasClass('open')) {
-    $('.card').removeClass('open');
+    cards.removeClass('open');
   }
 
   if (cards.hasClass('show')) {
-    $('.card').removeClass('show');
+    cards.removeClass('show');
   }
 
   // re set the first element .. opening it .. and pushing it into the open cards array
   firstElement = cards.children(':eq(0)').parent('.card').addClass('open show clicked flipped');
   openCardsArr = [firstElement];
-  // reset the number of seconds to 0
+  // reset matched cards array
+  matchedCardsArr = [];
+  // reset the number of seconds to 0 .. stop the timer .. reset timer status (first click (true/false))
   seconds = 0;
   clearInterval(counter);
+  firstClick = false; // to run the timer again
   // reset the number of moves to 0
   move = 0
   $('.moves').html(move);
@@ -87,13 +90,11 @@ cards.each(function () {
   let $this = $(this);
 
   $this.on('click', function () {
-    
+
     // features functions
     if (!firstClick) {
       timer();
     }
-    incrementMovecounter($this);
-    decrementStars();
 
     // if game is runing wait unitl it finishs
     if (!gameIsRunning) {
@@ -105,6 +106,8 @@ cards.each(function () {
         openCards($this);
         // else if the array has an element check if the two cards are matched .. and the taget card isn't clicked before and it isn't the cad itself but another cad
       } else if (openCardsArr.length == 1 && !$this.hasClass('clicked') && !$this.hasClass('match')) {
+        incrementMovecounter($this);
+        decrementStars();
         matchedOrNotmatchedCards($this);
       }
 
@@ -243,7 +246,7 @@ let move = 0;
 
 function incrementMovecounter(element) {
   // this if condition to prevent the function from counting every clicked element
-  if (!element.hasClass('clicked') && !element.hasClass('match')) {
+  if (!element.hasClass('clicked')) {
     move += 1;
     $('.moves').html(move);
   }
