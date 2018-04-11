@@ -116,14 +116,13 @@ h1 {
 }
 
 .score-panel .restart-icon__holder {
-    float: right;
     cursor: pointer;
     /* those edits is for making the icon more clickable*/
     width: 48px;
     height: 48px;
     /* PS: i learned this from udacity responsive lesson :) */
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
 }
 
 .score-panel .restart-icon__holder i {
@@ -247,6 +246,16 @@ h1 {
 
 /* overlap edits */
 
+/* i'm not using !important here to override the element style because i nested the element from his parent so it overrides it without !important  */
 .deck .card.wrong-answer {
   background: #f25327;
+}
+
+/* i'm using !important here to override the element style because i didn't nested it from his parent */
+.float-right {
+  float: right !important;
+}
+
+.float-left {
+  float: left !important;
 }

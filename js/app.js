@@ -74,6 +74,7 @@ function resetGame() {
   // reset the number of seconds to 0 .. stop the timer .. reset timer status (first click (true/false))
   seconds = 0;
   clearInterval(counter);
+  $('#time-info').html('00 : 00');
   firstClick = false; // to run the timer again
   // reset the number of moves to 0
   move = 0
@@ -231,11 +232,29 @@ function  matchedOrNotmatchedCards(element) {
 let firstClick = false;
 let counter;
 let seconds = 0;
+let second = 0;
+let minute = 0;
 
 function timer() {
   firstClick = true;
   counter = setInterval(function () {
           seconds += 1;
+
+          second = (seconds % 60);
+          minute = parseInt(seconds / 60);
+
+          // if second < 10 add a 0 before the seconds
+          if (second < 10) {
+            second = `0${(seconds % 60)}`;
+          }
+
+          // if minutes < 10 add a 0 before the minutes
+          if (minute < 10) {
+            minute = `0${parseInt(seconds / 60)}`;
+          }
+
+          $('#time-info').html(`${minute} : ${second}`);
+
       }, 1000);
 }
 
@@ -310,11 +329,18 @@ function winGame() {
       }
 
       // number of seconds
-      if (seconds === 1) {
-        $('#seconds-info').text(seconds + ' second');
-      } else {
-        $('#seconds-info').text(seconds + ' seconds');
+      let minuteTxt = 'minutes';
+      let secondTxt = 'seconds';
+
+      if (second === '01') {
+        secondTxt = 'second';
       }
+
+      if (minute === '01') {
+        minuteTxt = 'minute';
+      }
+
+      $('#seconds-info').text(`${minute} ${minuteTxt} and ${second} ${secondTxt}`);
 
     }, 1000);
   }
