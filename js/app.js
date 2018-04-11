@@ -19,7 +19,7 @@ function shuffle(array) {
     return array;
 }
 
-// for debug
+// for debug .. show all cards at once
 // cards.addClass(' open show');
 
 /*
@@ -27,10 +27,6 @@ function shuffle(array) {
 // start game self invoked function ***
 ///////////////////////////////////////
 */
-
-// to do : the move counter counts twice .. it counts on every click (fix)
-// to do : the seconds counter dosn't run (fix)
-// to do : the play again button make the win from the first play (fix)
 
 function startGame() {
   // shuffle cards using shuffle function
@@ -54,9 +50,6 @@ function resetGame() {
   // window.location.reload(); .. this is the easy way :D (refresh the page)
 
   // flib back all the cards
-  if (cards.hasClass('match')) {
-    cards.removeClass('match');
-  }
 
   if (cards.hasClass('open')) {
     cards.removeClass('open');
@@ -66,8 +59,16 @@ function resetGame() {
     cards.removeClass('show');
   }
 
+  if (cards.hasClass('match')) {
+    cards.removeClass('match');
+  }
+
+  if (cards.hasClass('flipInY')) {
+    cards.removeClass('flipInY');
+  }
+
   // re set the first element .. opening it .. and pushing it into the open cards array
-  firstElement = cards.children(':eq(0)').parent('.card').addClass('open show clicked flipped');
+  firstElement = cards.children(':eq(0)').parent('.card').addClass('open show clicked flipInY');
   openCardsArr = [firstElement];
   // reset matched cards array
   matchedCardsArr = [];
@@ -88,18 +89,18 @@ function resetGame() {
 
 // this function loop through the cards and call another functions when click on any card of them
 cards.each(function () {
+  // cache $(this) in a variable to improve performance .. don't call it many times just once
   let $this = $(this);
 
   $this.on('click', function () {
 
-    // features functions
+    // features function
     if (!firstClick) {
       timer();
     }
 
     // if game is runing wait unitl it finishs
     if (!gameIsRunning) {
-
       // core functions
       displaySymbol($this);
       // if open cads array has less than one index .. execute the function .. and stord a card
@@ -107,13 +108,18 @@ cards.each(function () {
         openCards($this);
         // else if the array has an element check if the two cards are matched .. and the taget card isn't clicked before and it isn't the cad itself but another cad
       } else if (openCardsArr.length == 1 && !$this.hasClass('clicked') && !$this.hasClass('match')) {
+        // set the (game is runing ?) status to true
+        gameIsRunning = true;
+        // features functions
         incrementMovecounter($this);
         decrementStars();
-        matchedOrNotmatchedCards($this);
-      }
 
-      // after all of the core functions .. now check if all cards are matched .. * We can't check if they are matched until the game approach is ended :) *
-      winGame();
+        setTimeout(function() {
+          // core function
+          matchedOrNotmatchedCards($this);
+
+        }, 1020);
+      }
     }
   });
 });
@@ -121,14 +127,20 @@ cards.each(function () {
 
 function displaySymbol(element) {
   // check if element has not match class .. because if the card is matched we don't need it again
-  if (!element.hasClass('match')) {
-    element.addClass('open show flipped');
+  if (!element.hasClass('show') && !element.hasClass('match')) {
+    element.addClass('open show flipInY');
   }
+
+  setTimeout(function () {
+    // remove flipInY class from the two cards
+    element.removeClass('flipInY');
+  }, 1000);
+
 }
 
 // list of open cards
 // firstElement is the random first open card , i used it to compare with the second element showen by click
-let firstElement = $('.card.open.show.flipped');
+let firstElement = $('.card.open.show.flipInY');
 let openCardsArr = [firstElement];
 
 // open cards function which stores the open card from the first click then i use it to compare with the card which clicked secondly
@@ -155,13 +167,12 @@ function  matchedOrNotmatchedCards(element) {
   // (if condition) checks if : the openCardsArr is empty or not.. the game is running or not
   if (typeof openCardsArr !== 'undefined' && openCardsArr.length > 0) {
 
-    gameIsRunning = true;
-
     let clickedElement = element;
     let openCardElement =  openCardsArr[openCardsArr.length - 1];
     let clickedClass = element.children().attr('class');
     let openCardClass = openCardsArr[openCardsArr.length - 1].children().attr('class');
 
+      // if the two cards are matched
       if (clickedClass === openCardClass) {
         // lock the cards
         clickedElement.removeClass('open show');
@@ -171,52 +182,64 @@ function  matchedOrNotmatchedCards(element) {
         openCardElement.addClass('match');
 
         // animate the two cards
-        clickedElement.addClass('animated rubberBand');
-        openCardElement.addClass('animated rubberBand');
+        clickedElement.addClass('rubberBand');
+        openCardElement.addClass('rubberBand');
 
-        // remove animate class from the two cards after 1 second .. and end the game runing status
+        // remove animate class from the two cards after 1 second
         setTimeout(function () {
-          clickedElement.removeClass('animated rubberBand');
-          openCardElement.removeClass('animated rubberBand');
+          clickedElement.removeClass('rubberBand');
+          openCardElement.removeClass('rubberBand');
 
+          // push the two matched cards into matched cards array to use them in the winGame function
+          matchedCardsArr.push(clickedElement, openCardElement);
+
+          /*
+          ////////////////////
+          // core function
+          ///////////////////
+          */
+
+          // after all of the core functions .. now check if all cards are matched .. * We can't check if they are matched until the game approach is ended :) *
+          winGame();
+
+          // empty the open cards array
+          resetOpenCards();
+          // reset game status
           gameIsRunning = false;
 
-        }, 1000);
-
-        // push the two matched cards into matched cards array to use them in the winGame function
-        matchedCardsArr.push(clickedElement, openCardElement);
-
-        resetOpenCards();
+        }, 1020);
 
       } else if (clickedClass !== openCardClass) {
 
-        // wait 0.3 second
-        setTimeout(function() {
-          // animate the two cards
-          clickedElement.addClass('animated wobble wrong-answer');
-          openCardElement.addClass('animated wobble wrong-answer');
-        }, 300);
+        // the first element on the game start has an flipInY class .. if that element exist and it exist on the game start remove that class from it
+        if (openCardElement.hasClass('flipInY')) {
+          openCardElement.removeClass('flipInY');
+        }
 
+        // animate the two cards
+        clickedElement.addClass('wobble wrong-answer');
+        openCardElement.addClass('wobble wrong-answer');
 
         // waint 1 second and : flip the card .. clear animate end the game runing status
         window.setTimeout(function () {
-          // remove animate class from the two cards
-          clickedElement.removeClass('animated wobble show');
-          openCardElement.removeClass('animated wobble show');
 
-          // wait another time
-          setTimeout(function () {
             // flip back the cards
-            clickedElement.removeClass('open show flipped wrong-answer');
-            openCardElement.removeClass('open show flipped wrong-answer');
+            clickedElement.removeClass('wobble open show wrong-answer');
+            openCardElement.removeClass('wobble open show wrong-answer');
 
-            gameIsRunning = false;
+            clickedElement.addClass('flipInY');
+            openCardElement.addClass('flipInY');
 
-          }, 100);
+            setTimeout(function () {
+              clickedElement.removeClass('flipInY');
+              openCardElement.removeClass('flipInY');
+            }, 1020);
 
-        }, 1000);
+        }, 1020);
 
         resetOpenCards();
+
+        gameIsRunning = false;
 
       }
   }
