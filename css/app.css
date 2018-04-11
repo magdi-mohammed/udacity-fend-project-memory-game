@@ -68,10 +68,11 @@ h1 {
     justify-content: center;
     align-items: center;
     box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
+}
 
-    /*transition effects */
-    transition: transform 0.2s;
-    transform-style: preserve-3d;
+/* make the animation faster on flip and flip back */
+.deck .card.flipInY {
+  animation-duration: 0.3s;
 }
 
 .deck .card.open {
