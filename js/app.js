@@ -40,6 +40,10 @@ function startGame() {
   for (let card of cards){
   	$('.deck').append(card);
   }
+
+  // after cards are shuffled and added to the html now show them all for a little time them hide them all
+  showAllCards();
+
 }
 
 startGame();
@@ -67,15 +71,13 @@ function resetGame() {
     cards.removeClass('flipInY');
   }
 
-  // re set the first element .. opening it .. and pushing it into the open cards array
-  firstElement = cards.children(':eq(0)').parent('.card').addClass('open show clicked flipInY');
-  openCardsArr = [firstElement];
   // reset matched cards array
   matchedCardsArr = [];
   // reset the number of seconds to 0 .. stop the timer .. reset timer status (first click (true/false))
   seconds = 0;
   clearInterval(counter);
   $('#time-info').html('00 : 00');
+  // reset the first click status
   firstClick = false; // to run the timer again
   // reset the number of moves to 0
   move = 0
@@ -85,6 +87,38 @@ function resetGame() {
   firstStar.attr('class', 'star-one fa fa-star');
   secondStar.attr('class', 'star-two fa fa-star');
   LastStar.attr('class', 'star-three fa fa-star');
+
+  // reset the play status
+  play = false;
+}
+
+// after cards are shuffled and added to the html now show them all for a little time them hide them all
+let play = false;
+function showAllCards() {
+  // wait a little time then show the cards for performance
+  setTimeout(function () {
+    // open, show and flip all the cards
+    cards.addClass('open show flipInY');
+
+    setTimeout(function () {
+      // on animation end remove animation class
+      cards.removeClass('flipInY');
+
+      setTimeout(function () {
+        // flip back all the cards and close them .. with an animation
+        cards.removeClass('open show');
+        cards.addClass('flipInY');
+        setTimeout(function () {
+          // on animation end remove animation class
+          cards.removeClass('flipInY');
+          play = true;
+        }, 320);
+
+      }, 1020);
+
+    }, 320);
+
+  }, 250);
 }
 
 // this function loop through the cards and call another functions when click on any card of them
@@ -94,33 +128,36 @@ cards.each(function () {
 
   $this.on('click', function () {
 
-    // features function
-    if (!firstClick) {
-      timer();
-    }
+    if (play) {
+      // features function
+      if (!firstClick) {
+        timer();
+      }
 
-    // if game is runing wait unitl it finishs
-    if (!gameIsRunning) {
-      // core functions
-      displaySymbol($this);
-      // if open cads array has less than one index .. execute the function .. and stord a card
-      if (openCardsArr.length < 1 && !$this.hasClass('match')) {
-        openCards($this);
-        // else if the array has an element check if the two cards are matched .. and the taget card isn't clicked before and it isn't the cad itself but another cad
-      } else if (openCardsArr.length == 1 && !$this.hasClass('clicked') && !$this.hasClass('match')) {
-        // set the (game is runing ?) status to true
-        gameIsRunning = true;
-        // features functions
-        incrementMovecounter($this);
-        decrementStars();
+      // if game is runing wait unitl it finishs
+      if (!gameIsRunning) {
+        // core functions
+        displaySymbol($this);
+        // if open cads array has less than one index .. execute the function .. and stord a card
+        if (openCardsArr.length < 1 && !$this.hasClass('match')) {
+          openCards($this);
+          // else if the array has an element check if the two cards are matched .. and the taget card isn't clicked before and it isn't the cad itself but another cad
+        } else if (openCardsArr.length == 1 && !$this.hasClass('clicked') && !$this.hasClass('match')) {
+          // set the (game is runing ?) status to true
+          gameIsRunning = true;
+          // features functions
+          incrementMovecounter($this);
+          decrementStars();
 
-        setTimeout(function() {
-          // core function
-          matchedOrNotmatchedCards($this);
+          setTimeout(function() {
+            // core function
+            matchedOrNotmatchedCards($this);
 
-        }, 1020);
+          }, 1020);
+        }
       }
     }
+
   });
 });
 // display the card symbol function
@@ -139,10 +176,8 @@ function displaySymbol(element) {
 }
 
 // list of open cards
-// firstElement is the random first open card , i used it to compare with the second element showen by click
-let firstElement = $('.card.open.show.flipInY');
-let openCardsArr = [firstElement];
 
+let openCardsArr = [];
 // open cards function which stores the open card from the first click then i use it to compare with the card which clicked secondly
 function openCards(element) {
   openCardsArr.push(element);
