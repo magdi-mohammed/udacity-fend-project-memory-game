@@ -34,6 +34,8 @@ h1 {
     text-transform: uppercase;
 }
 
+/* end of global */
+
 /*
  * Styles for the deck of cards
  */
@@ -50,6 +52,8 @@ h1 {
     justify-content: space-between;
     align-items: center;
     margin: 0 0 3em;
+    /* this is set to fix an issue with restart-icon__holder*/
+    z-index: 1;
 }
 
 .deck .card {
@@ -66,10 +70,18 @@ h1 {
     box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
 }
 
+/* make the animation faster on flip and flip back */
+.deck .card.flipInY {
+  animation-duration: 0.3s;
+}
+
 .deck .card.open {
-    transform: rotateY(0);
     background: #02b3e4;
     cursor: default;
+}
+
+.deck .card.flipped {
+  transform: rotateY( 180deg );
 }
 
 .deck .card.show {
@@ -89,7 +101,7 @@ h1 {
 .score-panel {
     text-align: left;
     width: 345px;
-    margin-bottom: 10px;
+    margin-bottom: -15px;
 }
 
 .score-panel .stars {
@@ -104,7 +116,147 @@ h1 {
     display: inline-block;
 }
 
-.score-panel .restart {
-    float: right;
+.score-panel .restart-icon__holder {
     cursor: pointer;
+    /* those edits is for making the icon more clickable*/
+    width: 48px;
+    height: 48px;
+    /* PS: i learned this from udacity responsive lesson :) */
+    display: flex;
+    justify-content: flex-end;
+}
+
+.score-panel .restart-icon__holder i {
+  margin-top: 4px;
+}
+
+/* win game message section  */
+
+#win-message-section {
+  opacity: 0;
+  visibility: hidden;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+  transition: opacity 0.2s ease-in;
+  /* to fix the issue which happend because of  card z-index */
+  z-index: 9;
+}
+
+/*
+** animations
+*/
+
+/* svg */
+
+#win-message-section .righ-mark {
+  width: 70px;
+}
+
+.circ{
+    opacity: 0;
+    stroke-dasharray: 130;
+    stroke-dashoffset: 130;
+    -webkit-transition: all 1s;
+    -moz-transition: all 1s;
+    -ms-transition: all 1s;
+    -o-transition: all 1s;
+    transition: all 1s;
+    /* styles */
+    fill: #ffffff;
+    stroke: rgba(0, 0, 0, 0.1);
+    stroke-width: 2;
+    stroke-linejoin: round;
+    stroke-miterlimit: 10;
+}
+.tick{
+    stroke-dasharray: 50;
+    stroke-dashoffset: 50;
+    -webkit-transition: stroke-dashoffset 1s 0.5s ease-out;
+    -moz-transition: stroke-dashoffset 1s 0.5s ease-out;
+    -ms-transition: stroke-dashoffset 1s 0.5s ease-out;
+    -o-transition: stroke-dashoffset 1s 0.5s ease-out;
+    transition: stroke-dashoffset 1s 0.5s ease-out;
+
+    /* styles */
+    fill:none;
+    stroke: #8bd599;
+    stroke-width:2;
+    stroke-linejoin:round;
+    stroke-miterlimit:10;
+}
+.drawn svg .path{
+    opacity: 1;
+    stroke-dashoffset: 0;
+}
+
+/* the rest of elements */
+
+.game-win-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.fade-out {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease-in;
+  transition-delay: 0.7s;
+}
+
+.fade-in {
+  opacity: 1;
+  visibility: visible;
+}
+
+#win-message-section h2 {
+  text-align: center;
+}
+
+#win-message-section .txt-holder {
+  text-align: center;
+  color: #6c6c6c;
+  margin-bottom: 1em;
+}
+
+#win-message-section .txt-holder .txt {
+  margin: 0;
+}
+
+#win-message-section .play-again__botton {
+  background: #02ccba;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 5px;
+  padding: 5px 20px;
+  cursor: pointer;
+}
+
+/* end of win the game message section */
+
+/* overlap edits */
+
+/* i'm not using !important here to override the element style because i nested the element from his parent so it overrides it without !important  */
+.deck .card.wrong-answer {
+  background: #f25327;
+}
+
+/* i'm using !important here to override the element style because i didn't nested it from his parent */
+.float-right {
+  float: right !important;
+}
+
+.float-left {
+  float: left !important;
 }

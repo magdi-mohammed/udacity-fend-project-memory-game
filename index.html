@@ -6,9 +6,14 @@
     <meta name="description" content="">
     <!-- font awesome CDN -->
     <!-- <link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css"> -->
-    <!-- font awesome local file -->
+    <!-- font awesome local file for backup -->
     <link rel="stylesheet" href="css/font-awesome.min.css">
+    <!-- code font family -->
+    <!-- animate.css CDN -->
+    <!-- <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"> -->
     <link rel="stylesheet prefetch" href="https://fonts.googleapis.com/css?family=Coda">
+    <!-- animate.css library file for backup -->
+    <link rel="stylesheet" href="css/animate.min.css">
     <!-- my main stylesheet file -->
     <link rel="stylesheet" href="css/app.css">
     <!-- resposive file  -->
@@ -30,62 +35,90 @@
 
         	<span class="moves">0</span> Moves
 
-            <div class="restart">
-        		<i class="fa fa-repeat"></i>
-        	</div>
+          <div class="float-right">
+            <div id="timer-show" class="float-left">
+              <span id="time-info">00 : 00</span>
+            </div>
+            <div id="restart" class="restart-icon__holder float-right">
+          		<i class="fa fa-repeat"></i>
+          	</div>
+          </div>
         </section>
 
         <ul class="deck">
-            <li class="card">
+            <li class="card animated">
                 <i class="fa fa-diamond"></i>
             </li>
-            <li class="card">
+            <li class="card animated">
                 <i class="fa fa-paper-plane-o"></i>
             </li>
-            <li class="card">
+            <li class="card animated">
                 <i class="fa fa-anchor"></i>
             </li>
-            <li class="card">
+            <li class="card animated">
                 <i class="fa fa-bolt"></i>
             </li>
-            <li class="card">
+            <li class="card animated">
                 <i class="fa fa-cube"></i>
             </li>
-            <li class="card">
+            <li class="card animated">
                 <i class="fa fa-anchor"></i>
             </li>
-            <li class="card">
+            <li class="card animated">
                 <i class="fa fa-leaf"></i>
             </li>
-            <li class="card">
+            <li class="card animated">
                 <i class="fa fa-bicycle"></i>
             </li>
-            <li class="card">
+            <li class="card animated">
                 <i class="fa fa-diamond"></i>
             </li>
-            <li class="card">
+            <li class="card animated">
                 <i class="fa fa-bomb"></i>
             </li>
-            <li class="card">
+            <li class="card animated">
                 <i class="fa fa-leaf"></i>
             </li>
-            <li class="card">
+            <li class="card animated">
                 <i class="fa fa-bomb"></i>
             </li>
-            <li class="card open show clicked">
+            <li class="card animated">
                 <i class="fa fa-bolt"></i>
             </li>
-            <li class="card">
+            <li class="card animated">
                 <i class="fa fa-bicycle"></i>
             </li>
-            <li class="card">
+            <li class="card animated">
                 <i class="fa fa-paper-plane-o"></i>
             </li>
-            <li class="card">
+            <li class="card animated">
                 <i class="fa fa-cube"></i>
             </li>
         </ul>
     </div>
+    <!-- win game message section  -->
+    <div id="win-message-section">
+      <div class="righ-mark">
+        <!-- (svg Congratulations Page Done Icon, with my own styles) from : https://codepen.io/abhijit_mishra/pen/yXWwqd -->
+        <svg version="1.1" id="tick" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 37 37" style="enable-background:new 0 0 37 37;" xml:space="preserve">
+          <path class="circ path" d="M30.5,6.5L30.5,6.5c6.6,6.6,6.6,17.4,0,24l0,0c-6.6,6.6-17.4,6.6-24,0l0,0c-6.6-6.6-6.6-17.4,0-24l0,0C13.1-0.2,23.9-0.2,30.5,6.5z"/>
+          <polyline class="tick path" points="11.6,20 15.9,24.2 26.4,13.8 "/>
+        </svg>
+      </div>
+      <div class="fade-out game-win-info">
+        <h2>
+          Congratulations! You Won!
+        </h2>
+        <div class="txt-holder">
+          <p class="txt" id="win-info">
+            with <span id="moves-number"></span> moves and <span id="stars-info"></span><br> in <span id="seconds-info"></span>
+          </p>
+          <p class="txt">Wooooooo!</p>
+        </div>
+        <div id="play-again" class="play-again__botton">Play again!</div>
+      </div>
+    </div>
+    <!-- end of win game message section -->
     <script src="js/jquery-3.3.1.slim.min.js"></script>
     <script src="js/app.js"></script>
 </body>
