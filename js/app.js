@@ -100,23 +100,23 @@ function showAllCards() {
     // open, show and flip all the cards
     cards.addClass('open show flipInY');
 
-    setTimeout(function () {
-      // on animation end remove animation class
-      cards.removeClass('flipInY');
+   setTimeout(function () {
+     // on animation end remove animation class
+     cards.removeClass('flipInY');
 
-      setTimeout(function () {
-        // flip back all the cards and close them .. with an animation
-        cards.removeClass('open show');
-        cards.addClass('flipInY');
-        setTimeout(function () {
-          // on animation end remove animation class
-          cards.removeClass('flipInY');
-          play = true;
-        }, 320);
+     setTimeout(function () {
+       // flip back all the cards and close them .. with an animation
+       cards.removeClass('open show');
+       cards.addClass('flipInY');
+       setTimeout(function () {
+         // on animation end remove animation class
+         cards.removeClass('flipInY');
+         play = true;
+       }, 320);
 
-      }, 1020);
+     }, 1020);
 
-    }, 320);
+   }, 320);
 
   }, 250);
 }
