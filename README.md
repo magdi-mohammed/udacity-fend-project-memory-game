@@ -5,6 +5,7 @@ Udacity (Front-End Web Developer Nanodegree Project): Memory Game.
 ## Table of Contents
 
 * [Project Overview](#project-overview)
+* [How to play](#How to play)
 * [Project Specifications](#project-specifications)
 * [Acknowledgements](#acknowledgements)
 * [Contributing](#contributing)
@@ -52,6 +53,11 @@ In the real-life game, players flip over cards to locate the pairs that match. T
 -   What happens when cards match
 -   What happens when cards do not match
 -   When the game finishes
+
+## How to play
+
+You can play the [here](https://magdi-mohammed.github.io/udacity-fend-project-memory-game/)
+or you can [clone](https://github.com/magdi-mohammed/udacity-fend-project-memory-game) it.
 
 ## Project Specifications
 
