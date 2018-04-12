@@ -35,7 +35,7 @@ The game ends once all cards have been correctly matched.
 
 -   Incorrect match action
 
-![Incorrect match](screenshots/uncorrect-match.png "incorrect match")
+![Incorrect match](screenshots/incorrect-match.png "incorrect match")
 
 -   Correct match action
 
