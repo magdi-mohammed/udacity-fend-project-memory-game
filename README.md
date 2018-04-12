@@ -1,4 +1,4 @@
-# udacity-fend memory game project
+# Udacity-fend memory game project
 
 Udacity (Front-End Web Developer Nanodegree Project): Memory Game.
 
@@ -29,9 +29,19 @@ The game ends once all cards have been correctly matched.
 
 ### Screenshots
 
+-   Game start screen
+
 ![Start Screen](screenshots/game-start.png "start screen")
 
-![Game in Play](screenshots/correct-match.png "correct match") ![Game in Play](screenshots/uncorrect-match.png "uncorrect match")
+-   Incorrect match action
+
+![Incorrect match](screenshots/uncorrect-match.png "incorrect match")
+
+-   Correct match action
+
+![Correct match](screenshots/correct-match.png "correct match")
+
+-   Game win action
 
 ![Win Screen](screenshots/game-win.png "game win")
 
