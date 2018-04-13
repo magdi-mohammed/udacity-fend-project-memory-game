@@ -90,7 +90,6 @@ function resetGame() {
   $('.moves').html(move);
   // reset the number of stars to 3 and show full stars
   starsNumber = 3;
-  firstStar.attr('class', 'star-one fa fa-star');
   secondStar.attr('class', 'star-two fa fa-star');
   LastStar.attr('class', 'star-three fa fa-star');
 
@@ -334,7 +333,6 @@ function incrementMovecounter(element) {
 // this variable will be shown after wining the game
 let starsNumber = 3;
 // html indexed stars
-let firstStar = $('.star-one');
 let secondStar = $('.star-two');
 let LastStar = $('.star-three');
 
@@ -351,11 +349,7 @@ function decrementStars() {
     starsNumber = 1;
     secondStar.attr('class', 'star-two fa fa-star-o');
   }
-  // zero
-  if (move == 18) {
-    starsNumber = 0;
-    firstStar.attr('class', 'star-one fa fa-star-o');
-  }
+
 }
 
 // win game function
