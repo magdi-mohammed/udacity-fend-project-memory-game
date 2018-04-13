@@ -55,6 +55,10 @@ function resetGame() {
 
   // flib back all the cards
 
+  if (cards.hasClass('clicked')) {
+    cards.removeClass('clicked');
+  }
+
   if (cards.hasClass('open')) {
     cards.removeClass('open');
   }
@@ -73,6 +77,8 @@ function resetGame() {
 
   // reset matched cards array
   matchedCardsArr = [];
+  // reset open cards array
+  openCardsArr = [];
   // reset the number of seconds to 0 .. stop the timer .. reset timer status (first click (true/false))
   seconds = 0;
   clearInterval(counter);
@@ -84,7 +90,6 @@ function resetGame() {
   $('.moves').html(move);
   // reset the number of stars to 3 and show full stars
   starsNumber = 3;
-  firstStar.attr('class', 'star-one fa fa-star');
   secondStar.attr('class', 'star-two fa fa-star');
   LastStar.attr('class', 'star-three fa fa-star');
 
@@ -100,23 +105,23 @@ function showAllCards() {
     // open, show and flip all the cards
     cards.addClass('open show flipInY');
 
-    setTimeout(function () {
-      // on animation end remove animation class
-      cards.removeClass('flipInY');
+   setTimeout(function () {
+     // on animation end remove animation class
+     cards.removeClass('flipInY');
 
-      setTimeout(function () {
-        // flip back all the cards and close them .. with an animation
-        cards.removeClass('open show');
-        cards.addClass('flipInY');
-        setTimeout(function () {
-          // on animation end remove animation class
-          cards.removeClass('flipInY');
-          play = true;
-        }, 320);
+     setTimeout(function () {
+       // flip back all the cards and close them .. with an animation
+       cards.removeClass('open show');
+       cards.addClass('flipInY');
+       setTimeout(function () {
+         // on animation end remove animation class
+         cards.removeClass('flipInY');
+         play = true;
+       }, 320);
 
-      }, 1020);
+     }, 1020);
 
-    }, 320);
+   }, 320);
 
   }, 250);
 }
@@ -328,7 +333,6 @@ function incrementMovecounter(element) {
 // this variable will be shown after wining the game
 let starsNumber = 3;
 // html indexed stars
-let firstStar = $('.star-one');
 let secondStar = $('.star-two');
 let LastStar = $('.star-three');
 
@@ -345,11 +349,7 @@ function decrementStars() {
     starsNumber = 1;
     secondStar.attr('class', 'star-two fa fa-star-o');
   }
-  // zero
-  if (move == 18) {
-    starsNumber = 0;
-    firstStar.attr('class', 'star-one fa fa-star-o');
-  }
+
 }
 
 // win game function
