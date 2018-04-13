@@ -55,6 +55,10 @@ function resetGame() {
 
   // flib back all the cards
 
+  if (cards.hasClass('clicked')) {
+    cards.removeClass('clicked');
+  }
+
   if (cards.hasClass('open')) {
     cards.removeClass('open');
   }
@@ -73,6 +77,8 @@ function resetGame() {
 
   // reset matched cards array
   matchedCardsArr = [];
+  // reset open cards array
+  openCardsArr = [];
   // reset the number of seconds to 0 .. stop the timer .. reset timer status (first click (true/false))
   seconds = 0;
   clearInterval(counter);
