@@ -352,6 +352,40 @@ function decrementStars() {
 
 }
 
+// store the moves (high score) for leader board section
+function storeHighscore() {
+  // html show info
+  let scoreShow = $('#leader-board .score-show');
+  let a = scoreShow.eq(0);
+  let b = scoreShow.eq(1);
+  let c = scoreShow.eq(2);
+
+  let firstScore = parseInt(localStorage.getItem('firstScore'));
+  let secondScore = parseInt(localStorage.getItem('secondScore'));
+  let thirdScore = parseInt(localStorage.getItem('thirdScore'));
+
+  a.text(`By ${firstScore} moves`);
+  b.text(`By ${secondScore} moves`);
+  c.text(`By ${thirdScore} moves`);
+
+  // if the number of moves is less than stored score store it again and write it in the dom
+  if (move < firstScore) {
+    localStorage.setItem('firstScore', move);
+    a.text(`By ${localStorage.getItem('firstScore')} moves`);
+    a.css({color : 'gold'});
+
+  } else if (move < secondScore) {
+    secondScore = localStorage.setItem('secondScore', move);
+    b.text(`By ${localStorage.getItem('secondScore')} moves`);
+    b.css({color : 'gold'});
+
+  } else if (move < thirdScore) {
+    thirdScore = localStorage.setItem('thirdScore', move);
+    c.text(`By ${localStorage.getItem('thirdScore')} moves`);
+    c.css({color : 'gold'});
+  }
+}
+
 // win game function
 let matchedCardsArr = [];
 function winGame() {
@@ -360,7 +394,8 @@ function winGame() {
 
     //stop the timer immediately
     clearInterval(counter);
-
+    // get and parse the high scores
+    storeHighscore();
     // wait one second after the game runing status is false  .. which means : there is no matching function is runings and no animations ...
     window.setTimeout(function () {
       // show the message section
