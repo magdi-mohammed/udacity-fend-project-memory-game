@@ -28,6 +28,10 @@ At each turn:
 
 The game ends once all cards have been correctly matched.
 
+And there is a leaderboard :
+-   Represent high scores.
+-   If you scored a new high score it highlights it and saves it.
+
 ### Screenshots
 
 -   Game start screen
@@ -41,6 +45,14 @@ The game ends once all cards have been correctly matched.
 -   Correct match action
 
 ![Correct match](screenshots/correct-match.png "correct match")
+
+-   High scores if you didn't get a high one.
+
+![High scores](screenshots/high-scores.png "High scores")
+
+-   High scores if you successfully get a high one.
+
+![New high score](screenshots/new-high-score.png "New high score")
 
 -   Game win action
 
