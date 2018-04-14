@@ -130,7 +130,7 @@ h1 {
   margin-top: 4px;
 }
 
-/* win game message section  */
+/* start of win game message section  */
 
 #win-message-section {
   opacity: 0;
@@ -244,6 +244,40 @@ h1 {
 }
 
 /* end of win the game message section */
+/* start of leader board section */
+#leader-board {
+  position: fixed;
+  z-index: 15;
+  top: 15px;
+  left: 15px;
+  width: 300px;
+  background: #02ccba;
+  color: #ffffff;
+  border-radius: 6px;
+  border: 3px solid #02ac9d;
+}
+
+#leader-board header {
+  text-align: center;
+  text-transform: uppercase;
+}
+
+#leader-board header h2 {
+  border-bottom: 2px solid #02ac9d;
+  display: inline-block;
+}
+
+#leader-board article {
+  display: flex;
+  flex-direction: column;
+  padding: 0 20px 20px 20px;
+}
+
+#leader-board article .leader-board__info:not(:last-of-type) {
+  margin-bottom: 10px;
+}
+
+/* end of leader board section */
 
 /* overlap edits */
 
