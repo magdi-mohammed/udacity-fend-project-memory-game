@@ -453,3 +453,14 @@ $('#play-again').on('click', function () {
   // animate the rest of elements
   $('.fade-out').removeClass('fade-in');
 });
+
+$(window).on('load', function () {
+  $('.preloader-dick').css({opacity: 0});
+  $('.preloader-txt').css({opacity: 0});
+  setTimeout(function () {
+    $('#preloader').css({opacity: 0});
+    setTimeout(function () {
+      $('#preloader').remove();
+    }, 300);
+  }, 300);
+});

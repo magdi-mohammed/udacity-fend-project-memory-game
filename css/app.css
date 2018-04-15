@@ -278,6 +278,132 @@ h1 {
 }
 
 /* end of leader board section */
+/* start of preloader */
+#preloader {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 99;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.3s;
+}
+
+#preloader .preloader-dick {
+  width: 280px;
+  height: 280px;
+  background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
+  padding: 32px;
+  border-radius: 10px;
+  box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  transition: opacity 0.3s;
+}
+
+#preloader .preloader-dick .preloader-card {
+  height: 100px;
+  width: 100px;
+  background: #2e3d49;;
+  font-size: 0;
+  color: #ffffff;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
+}
+
+#preloader .preloader-dick .preloader-card:nth-of-type(1) {
+  animation: cardOne 1s linear infinite;
+}
+
+#preloader .preloader-dick .preloader-card:nth-of-type(2) {
+  animation: cardTwo 1s linear infinite;
+}
+
+#preloader .preloader-dick .preloader-card:nth-of-type(3) {
+  animation: cardThree 1s linear infinite;
+}
+
+#preloader .preloader-dick .preloader-card:nth-of-type(4) {
+  animation: cardFour 1s linear infinite;
+}
+
+@keyframes cardOne {
+  0% {
+    background: #02ccba;
+  }
+
+  49.9% {
+    background: #02ccba;
+  }
+
+  50% {
+    background: #2e3d49;
+  }
+
+}
+
+@keyframes cardTwo {
+  50.9% {
+    background: #2e3d49;
+  }
+
+  51% {
+    background: #02ccba;
+  }
+
+  99% {
+    background: #02ccba;
+  }
+}
+
+@keyframes cardThree {
+  50.9% {
+    background: #2e3d49;
+  }
+
+  51% {
+    background: #02ccba;
+  }
+
+  99% {
+    background: #02ccba;
+  }
+}
+
+@keyframes cardFour {
+  0% {
+    background: #02ccba;
+  }
+
+  49.9% {
+    background: #02ccba;
+  }
+
+  50% {
+    background: #2e3d49;
+  }
+}
+
+#preloader .preloader-txt {
+  font-size: 1.4em;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: opacity 0.3s;
+}
+
+/* end of preloader */
 
 /* overlap edits */
 
