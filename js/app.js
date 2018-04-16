@@ -360,6 +360,21 @@ function storeHighscore() {
   let b = scoreShow.eq(1);
   let c = scoreShow.eq(2);
 
+  // check if there aren't a localStorage .. set the localStorage
+  if (localStorage.getItem('firstScore') === null) {
+    localStorage.setItem('firstScore', 16);
+  }
+
+  if (localStorage.getItem('secondScore') === null) {
+    localStorage.setItem('secondScore', 18);
+  }
+
+  if (localStorage.getItem('thirdScore') === null) {
+    localStorage.setItem('thirdScore', 21);
+  }
+
+  // git the localStorage and turn into integer
+
   let firstScore = parseInt(localStorage.getItem('firstScore'));
   let secondScore = parseInt(localStorage.getItem('secondScore'));
   let thirdScore = parseInt(localStorage.getItem('thirdScore'));
@@ -453,6 +468,9 @@ $('#play-again').on('click', function () {
   // animate the rest of elements
   $('.fade-out').removeClass('fade-in');
 });
+
+// to do : this function dosn't work with internet explorer and Safari (find a way to fix that)
+// to do : the styles need some prefixes because the design is in a big messy in safari also.
 
 $(window).on('load', function () {
   $('.preloader-dick').css({opacity: 0});
