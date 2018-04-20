@@ -1,11 +1,13 @@
 html {
-    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
 }
 
 *,
 *::before,
 *::after {
-    box-sizing: inherit;
+    -webkit-box-sizing: inherit;
+            box-sizing: inherit;
 }
 
 html,
@@ -22,10 +24,19 @@ body {
 }
 
 .container {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
 }
 
 h1 {
@@ -43,14 +54,24 @@ h1 {
 .deck {
     width: 650px;
     min-height: 650px;
+    background: -webkit-linear-gradient(290deg, #02ccba 0%, #aa7ecd 100%);
+    background: -o-linear-gradient(290deg, #02ccba 0%, #aa7ecd 100%);
     background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
     padding: 32px;
     border-radius: 10px;
-    box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
+    -webkit-box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
+            box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     margin: 0 0 3em;
     /* this is set to fix an issue with restart-icon__holder*/
     z-index: 1;
@@ -64,15 +85,23 @@ h1 {
     color: #ffffff;
     border-radius: 8px;
     cursor: pointer;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
+            box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
 }
 
 /* make the animation faster on flip and flip back */
 .deck .card.flipInY {
-  animation-duration: 0.3s;
+  -webkit-animation-duration: 0.3s;
+          animation-duration: 0.3s;
 }
 
 .deck .card.open {
@@ -81,7 +110,8 @@ h1 {
 }
 
 .deck .card.flipped {
-  transform: rotateY( 180deg );
+  -webkit-transform: rotateY( 180deg );
+          transform: rotateY( 180deg );
 }
 
 .deck .card.show {
@@ -122,8 +152,12 @@ h1 {
     width: 48px;
     height: 48px;
     /* PS: i learned this from udacity responsive lesson :) */
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: flex-end;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
 }
 
 .score-panel .restart-icon__holder i {
@@ -141,11 +175,22 @@ h1 {
   top: 0;
   left: 0;
   right: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   background: #fff;
+  -webkit-transition: opacity 0.2s ease-in;
+  -o-transition: opacity 0.2s ease-in;
   transition: opacity 0.2s ease-in;
   /* to fix the issue which happend because of  card z-index */
   z-index: 9;
@@ -166,8 +211,6 @@ h1 {
     stroke-dasharray: 130;
     stroke-dashoffset: 130;
     -webkit-transition: all 1s;
-    -moz-transition: all 1s;
-    -ms-transition: all 1s;
     -o-transition: all 1s;
     transition: all 1s;
     /* styles */
@@ -181,8 +224,6 @@ h1 {
     stroke-dasharray: 50;
     stroke-dashoffset: 50;
     -webkit-transition: stroke-dashoffset 1s 0.5s ease-out;
-    -moz-transition: stroke-dashoffset 1s 0.5s ease-out;
-    -ms-transition: stroke-dashoffset 1s 0.5s ease-out;
     -o-transition: stroke-dashoffset 1s 0.5s ease-out;
     transition: stroke-dashoffset 1s 0.5s ease-out;
 
@@ -201,17 +242,30 @@ h1 {
 /* the rest of elements */
 
 .game-win-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .fade-out {
   opacity: 0;
   visibility: hidden;
+  -webkit-transition: opacity 0.2s ease-in;
+  -o-transition: opacity 0.2s ease-in;
   transition: opacity 0.2s ease-in;
-  transition-delay: 0.7s;
+  -webkit-transition-delay: 0.7s;
+       -o-transition-delay: 0.7s;
+          transition-delay: 0.7s;
 }
 
 .fade-in {
@@ -268,8 +322,13 @@ h1 {
 }
 
 #leader-board article {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   padding: 0 20px 20px 20px;
 }
 
@@ -288,24 +347,47 @@ h1 {
   right: 0;
   z-index: 99;
   background: #ffffff;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-transition: opacity 0.3s;
+  -o-transition: opacity 0.3s;
   transition: opacity 0.3s;
 }
 
 #preloader .preloader-dick {
   width: 280px;
   height: 280px;
+  background: -webkit-linear-gradient(290deg, #02ccba 0%, #aa7ecd 100%);
+  background: -o-linear-gradient(290deg, #02ccba 0%, #aa7ecd 100%);
   background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
   padding: 32px;
   border-radius: 10px;
-  box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
+  -webkit-box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
+          box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-transition: opacity 0.3s;
+  -o-transition: opacity 0.3s;
   transition: opacity 0.3s;
 }
 
@@ -317,26 +399,52 @@ h1 {
   color: #ffffff;
   border-radius: 8px;
   cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
+          box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
 }
 
 #preloader .preloader-dick .preloader-card:nth-of-type(1) {
-  animation: cardOne 1s linear infinite;
+  -webkit-animation: cardOne 1s linear infinite;
+          animation: cardOne 1s linear infinite;
 }
 
 #preloader .preloader-dick .preloader-card:nth-of-type(2) {
-  animation: cardTwo 1s linear infinite;
+  -webkit-animation: cardTwo 1s linear infinite;
+          animation: cardTwo 1s linear infinite;
 }
 
 #preloader .preloader-dick .preloader-card:nth-of-type(3) {
-  animation: cardThree 1s linear infinite;
+  -webkit-animation: cardThree 1s linear infinite;
+          animation: cardThree 1s linear infinite;
 }
 
 #preloader .preloader-dick .preloader-card:nth-of-type(4) {
-  animation: cardFour 1s linear infinite;
+  -webkit-animation: cardFour 1s linear infinite;
+          animation: cardFour 1s linear infinite;
+}
+
+@-webkit-keyframes cardOne {
+  0% {
+    background: #02ccba;
+  }
+
+  49.9% {
+    background: #02ccba;
+  }
+
+  50% {
+    background: #2e3d49;
+  }
+
 }
 
 @keyframes cardOne {
@@ -354,7 +462,35 @@ h1 {
 
 }
 
+@-webkit-keyframes cardTwo {
+  50.9% {
+    background: #2e3d49;
+  }
+
+  51% {
+    background: #02ccba;
+  }
+
+  99% {
+    background: #02ccba;
+  }
+}
+
 @keyframes cardTwo {
+  50.9% {
+    background: #2e3d49;
+  }
+
+  51% {
+    background: #02ccba;
+  }
+
+  99% {
+    background: #02ccba;
+  }
+}
+
+@-webkit-keyframes cardThree {
   50.9% {
     background: #2e3d49;
   }
@@ -382,6 +518,20 @@ h1 {
   }
 }
 
+@-webkit-keyframes cardFour {
+  0% {
+    background: #02ccba;
+  }
+
+  49.9% {
+    background: #02ccba;
+  }
+
+  50% {
+    background: #2e3d49;
+  }
+}
+
 @keyframes cardFour {
   0% {
     background: #02ccba;
@@ -400,6 +550,8 @@ h1 {
   font-size: 1.4em;
   font-weight: bold;
   text-transform: uppercase;
+  -webkit-transition: opacity 0.3s;
+  -o-transition: opacity 0.3s;
   transition: opacity 0.3s;
 }
 

@@ -469,9 +469,6 @@ $('#play-again').on('click', function () {
   $('.fade-out').removeClass('fade-in');
 });
 
-// to do : this function dosn't work with internet explorer and Safari (find a way to fix that)
-// to do : the styles need some prefixes because the design is in a big messy in safari also.
-
 $(window).on('load', function () {
   $('.preloader-dick').css({opacity: 0});
   $('.preloader-txt').css({opacity: 0});
