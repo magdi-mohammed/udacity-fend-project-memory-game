@@ -46,6 +46,10 @@ And there is a leaderboard :
 
 ![Correct match](screenshots/correct-match.png "correct match")
 
+-   Game win action
+
+![Win Screen](screenshots/game-win.png "game win")
+
 -   High scores if you didn't get a high one.
 
 ![High scores](screenshots/high-scores.png "High scores")
@@ -53,10 +57,6 @@ And there is a leaderboard :
 -   High scores if you successfully get a high one.
 
 ![New high score](screenshots/new-high-score.png "New high score")
-
--   Game win action
-
-![Win Screen](screenshots/game-win.png "game win")
 
 ### Game Functionality
 
