@@ -60,6 +60,19 @@
 
 }
 
+@media only screen and (min-width: 791px) and (max-width: 1400px) {
+  .deck {
+    width: 560px;
+    min-height: 560px;
+  }
+
+  .deck .card {
+    width: 110px;
+    height: 110px;
+  }
+
+}
+
 @media only screen and (min-width: 1401px) {
 
   header h1 {
