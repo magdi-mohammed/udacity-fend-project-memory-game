@@ -389,16 +389,19 @@ function domReady() {
       localStorage.setItem('firstScore', move);
       a.text(`By ${localStorage.getItem('firstScore')} moves`);
       a.css({color : 'gold'});
+      $('.scored').text('New high score!');
 
     } else if (move < secondScore) {
       secondScore = localStorage.setItem('secondScore', move);
       b.text(`By ${localStorage.getItem('secondScore')} moves`);
       b.css({color : 'gold'});
+      $('.scored').text('New high score!');
 
     } else if (move < thirdScore) {
       thirdScore = localStorage.setItem('thirdScore', move);
       c.text(`By ${localStorage.getItem('thirdScore')} moves`);
       c.css({color : 'gold'});
+      $('.scored').text('New high score!');
     }
   }
 

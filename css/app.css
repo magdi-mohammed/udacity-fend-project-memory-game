@@ -309,6 +309,7 @@ h1 {
   color: #ffffff;
   border-radius: 6px;
   border: 3px solid #02ac9d;
+  padding: 1em;
 }
 
 #leader-board header {
@@ -319,6 +320,8 @@ h1 {
 #leader-board header h2 {
   border-bottom: 2px solid #02ac9d;
   display: inline-block;
+  margin-top: 0;
+  margin-bottom: 0.5em;
 }
 
 #leader-board article {
@@ -329,11 +332,15 @@ h1 {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  padding: 0 20px 20px 20px;
+          padding: 0 0 0.5em 0;
 }
 
 #leader-board article .leader-board__info:not(:last-of-type) {
   margin-bottom: 10px;
+}
+
+#leader-board .scored {
+  color: gold;
 }
 
 /* end of leader board section */
