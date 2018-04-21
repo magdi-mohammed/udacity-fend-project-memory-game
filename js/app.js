@@ -96,6 +96,14 @@ function domReady() {
 
     // reset the play status
     play = false;
+
+    // reset storeHighscore styles and info
+    a.css({color : '#ffffff'});
+    b.css({color : '#ffffff'});
+    c.css({color : '#ffffff'});
+    scoredMessage.text('');
+    scoredMessage.removeClass('decoration');
+
   }
 
   // after cards are shuffled and added to the html now show them all for a little time them hide them all
@@ -353,13 +361,18 @@ function domReady() {
 
   }
 
+  // storeHighscore function vars
+
+  // html show info
+  let scoreShow = $('#leader-board .score-show');
+  let a = scoreShow.eq(0);
+  let b = scoreShow.eq(1);
+  let c = scoreShow.eq(2);
+  // when you score .. show a message in this
+  let scoredMessage = $('.scored');
+
   // store the moves (high score) for leader board section
   function storeHighscore() {
-    // html show info
-    let scoreShow = $('#leader-board .score-show');
-    let a = scoreShow.eq(0);
-    let b = scoreShow.eq(1);
-    let c = scoreShow.eq(2);
 
     // check if there aren't a localStorage .. set the localStorage
     if (localStorage.getItem('firstScore') === null) {
@@ -389,16 +402,22 @@ function domReady() {
       localStorage.setItem('firstScore', move);
       a.text(`By ${localStorage.getItem('firstScore')} moves`);
       a.css({color : 'gold'});
+      scoredMessage.text('New high score!');
+      scoredMessage.addClass('decoration');
 
     } else if (move < secondScore) {
       secondScore = localStorage.setItem('secondScore', move);
       b.text(`By ${localStorage.getItem('secondScore')} moves`);
       b.css({color : 'gold'});
+      scoredMessage.text('New high score!');
+      scoredMessage.addClass('decoration');
 
     } else if (move < thirdScore) {
       thirdScore = localStorage.setItem('thirdScore', move);
       c.text(`By ${localStorage.getItem('thirdScore')} moves`);
       c.css({color : 'gold'});
+      scoredMessage.text('New high score!');
+      scoredMessage.addClass('decoration');
     }
   }
 
