@@ -332,18 +332,18 @@ h1 {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-          padding: 0 0 0.7em 0;
 }
 
 #leader-board article .leader-board__info:not(:last-of-type) {
   margin-bottom: 10px;
 }
 
-#leader-board .scored {
+#leader-board .scored.decoration {
   color: gold;
   border: 1px dashed gold;
   display: inline-block;
   padding: 2px 10px;
+  margin-top: 0.7em;
 }
 
 /* end of leader board section */
