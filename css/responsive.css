@@ -1,6 +1,6 @@
 /*spcial break point */
 
-@media only screen and (min-width: 391px) and (max-width: 800px) {
+@media only screen and (max-width: 800px) {
   #win-message-section {
     padding-top: 225px;
   }
