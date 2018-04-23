@@ -1,7 +1,15 @@
+/*spcial break point */
+
+@media only screen and (min-width: 391px) and (max-width: 800px) {
+  #win-message-section {
+    padding-top: 225px;
+  }
+}
+
 @media only screen and (max-width: 390px) {
 
   header h1 {
-    font-size: 1.4em;
+    font-size: 1.2em;
     font-weight: bold;
   }
 
@@ -24,7 +32,7 @@
   .deck .card.show,
   .deck .card.match
     {
-    font-size: 23px;
+    font-size: 17px;
   }
 }
 
