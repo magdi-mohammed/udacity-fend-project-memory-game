@@ -104,13 +104,13 @@
   }
 
   .deck .card {
-    width: 110px;
-    height: 110px;
+    width: 150px;
+    height: 150px;
   }
 
   .deck .card.show,
   .deck .card.match
     {
-    font-size: 63px;
+    font-size: 53px;
   }
 }
