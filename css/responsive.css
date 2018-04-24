@@ -1,8 +1,11 @@
 /*spcial break point */
 
 @media only screen and (max-width: 800px) {
-  #win-message-section {
-    padding-top: 225px;
+  #win-message-section #leader-board {
+    position: static;
+    top: 0;
+    left: 0;
+    margin-bottom: 20px;
   }
 }
 
